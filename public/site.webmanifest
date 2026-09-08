@@ -1,0 +1,14 @@
+{
+  "name": "The Craft Box Porthcawl",
+  "short_name": "Craft Box",
+  "description": "A cosy little haven of handmade creativity in Porthcawl.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#faf6f0",
+  "theme_color": "#1c7a8c",
+  "icons": [
+    { "src": "/icon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

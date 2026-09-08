@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand colours pulled from the shop's own logo (teal/blue wave, pink
+     wordmark) -- replacing the unstyled browser-default blue links that are
+     live on the Wix site today. */
+  --color-primary: #1c7a8c;
+  --color-primary-light: #2b96aa;
+  --color-primary-dark: #145a68;
+  --color-accent: #e0699a;
+  --color-accent-light: #ea8fb3;
+  --color-accent-dark: #c14c7c;
+  --color-surface: #faf6f0;
+  --color-surface-dark: #f1ebe0;
+  --color-border: #e6ddcf;
+  --color-border-strong: #6b7280;
+  --color-text-primary: #21323d;
+  --color-text-secondary: #4a5a63;
+  --color-text-inverse: #ffffff;
+  --color-success: #276749;
+  --color-error: #c53030;
+  --font-sans: 'Poppins', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Caveat', var(--font-sans);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-text-primary);
+    background-color: var(--color-surface);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  a {
+    color: var(--color-primary);
+  }
+
+  :focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 6px var(--color-primary);
+    border-radius: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
