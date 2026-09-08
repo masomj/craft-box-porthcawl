@@ -19,6 +19,14 @@ export const routes: RouteRecordRaw[] = [
     meta: { seoKey: page.seoKey },
   } as RouteRecordRaw)),
   {
+    // Not in `pages` -- it's not a top-level nav item. Prerendered paths for
+    // this route are added explicitly in vite.config.ts's includedRoutes.
+    path: '/commissions/:slug',
+    name: 'commission',
+    component: () => import('../pages/CommissionPage.vue'),
+    meta: { seoKey: 'commission' },
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'not-found',
     component: () => import('../pages/NotFoundPage.vue'),

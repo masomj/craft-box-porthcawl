@@ -1,10 +1,12 @@
 <template>
   <component
-    :is="to ? 'router-link' : 'a'"
+    :is="to ? 'router-link' : href ? 'a' : 'button'"
     :to="to"
     :href="href"
+    :type="!to && !href ? type : undefined"
+    :disabled="!to && !href ? disabled : undefined"
     :class="[
-      'inline-flex items-center justify-center font-semibold rounded-full transition-colors no-underline',
+      'inline-flex items-center justify-center font-semibold rounded-full transition-colors no-underline disabled:opacity-60 disabled:cursor-not-allowed',
       sizeClasses,
       variantClasses,
     ]"
@@ -21,9 +23,13 @@ const props = withDefaults(defineProps<{
   size?: 'sm' | 'md' | 'lg'
   to?: string
   href?: string
+  /** Only applies when rendering as a native <button> (no `to`/`href`). */
+  type?: 'button' | 'submit'
+  disabled?: boolean
 }>(), {
   variant: 'primary',
   size: 'md',
+  type: 'button',
 })
 
 const sizeClasses = computed(() => ({
