@@ -1,0 +1,40 @@
+# The Craft Box Porthcawl — robots.txt
+
+User-agent: *
+Allow: /
+
+# --- AI answer-engine / assistant crawlers ---
+# Explicitly allowed: deliberate allow-list so this shop can be found and
+# cited by AI assistants and answer engines, not an accident of the
+# wildcard above.
+
+# OpenAI — live ChatGPT browsing and citation
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI — training crawler
+User-agent: GPTBot
+Allow: /
+
+# Anthropic — Claude web search and citation
+User-agent: ClaudeBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Google — Gemini / AI Overviews signal, separate from Googlebot (covered by
+# "*" above, which must stay allowed for normal Search).
+User-agent: Google-Extended
+Allow: /
+
+# Common Crawl — feeds many third-party LLM training sets
+User-agent: CCBot
+Allow: /
+
+# Apple Intelligence / Siri
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://thecraftboxporthcawl.co.uk/sitemap.xml
