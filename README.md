@@ -26,9 +26,9 @@ About Us          — The Craft Box's story
 ## Content note: Meet the Artists
 
 The live Wix site's artist directory has broken/misaligned data — several artists have no bio
-(still showing Wix's placeholder text) and some have no photo uploaded. `src/data/artists.ts`
-carries this over as-is (flagged via `hasBio: false`) rather than guessing at content — getting
-real bios and photos from Mason for those artists is a follow-up, not done here.
+(still showing Wix's placeholder text) and some have no photo uploaded. Those artists are omitted
+from `src/data/artists.ts` rather than replicated with placeholder content — getting real bios
+and photos from Mason for those artists is a follow-up, not done here.
 
 ## SEO
 - Per-route title/description/OG via `useSeoMeta` (`src/composables/useSeoMeta.ts`)

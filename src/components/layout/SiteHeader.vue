@@ -1,10 +1,10 @@
 <template>
   <header class="bg-white border-b border-border sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between gap-4 h-20">
-        <router-link to="/" class="flex items-center gap-2 shrink-0 no-underline" aria-label="The Craft Box Porthcawl — home">
-          <img src="/logo.png" alt="" class="h-14 w-14 shrink-0" />
-          <span class="font-display text-2xl text-primary leading-tight">The Craft Box<br class="hidden sm:block" /> Porthcawl</span>
+      <div class="flex items-center justify-between gap-2 sm:gap-4 py-3 min-h-20">
+        <router-link to="/" class="flex items-center gap-2 min-w-0 no-underline" aria-label="The Craft Box Porthcawl — home">
+          <img src="/logo.png" alt="" class="h-10 w-10 sm:h-14 sm:w-14 shrink-0" />
+          <span class="font-display text-lg sm:text-2xl text-primary leading-tight">The Craft Box<br class="sm:hidden" /> Porthcawl</span>
         </router-link>
 
         <nav class="hidden md:block" aria-label="Main navigation">
@@ -20,10 +20,10 @@
             </li>
             <li>
               <router-link
-                to="/about-us"
+                to="/meet-the-artists"
                 class="ml-2 px-4 py-2 bg-accent hover:bg-accent-light text-white rounded-full no-underline font-semibold text-sm transition-colors whitespace-nowrap"
               >
-                Join Our Community
+                Meet Our Artists
               </router-link>
             </li>
           </ul>

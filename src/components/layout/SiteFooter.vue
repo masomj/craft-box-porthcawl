@@ -43,6 +43,10 @@
             </li>
           </ul>
 
+          <div class="mt-4 h-28 rounded-lg overflow-hidden border border-white/10">
+            <LocationMap />
+          </div>
+
           <h3 class="font-semibold text-sm uppercase tracking-wider mt-6 mb-3 text-white/90">Follow Us</h3>
           <div class="flex items-center gap-3">
             <a
@@ -80,6 +84,7 @@
 
 <script setup lang="ts">
 import { primaryNav } from '../../router'
+import LocationMap from '../shared/LocationMap.vue'
 
 const currentYear = new Date().getFullYear()
 </script>

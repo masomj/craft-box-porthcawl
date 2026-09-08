@@ -13,14 +13,15 @@
           fancy simply taking time to make something with your hands, The Craft Box is a place
           where creativity can flourish.
         </p>
-        <BaseButton to="/about-us" size="lg">Join Our Community</BaseButton>
+        <BaseButton to="/meet-the-artists" size="lg">Meet Our Artists</BaseButton>
       </div>
 
-      <div class="rounded-3xl overflow-hidden border border-border bg-surface-dark aspect-4/3 flex items-center justify-center">
-        <p class="text-text-secondary text-sm px-8 text-center">
-          Shopfront photo to come — see note to Mason about sourcing real photography for this
-          spot.
-        </p>
+      <div class="rounded-3xl overflow-hidden border border-border bg-surface-dark aspect-4/3">
+        <img
+          src="/shopfront.jpg"
+          alt="The Craft Box Porthcawl shopfront"
+          class="w-full h-full object-cover"
+        />
       </div>
     </section>
 
@@ -35,10 +36,19 @@
         <BaseButton to="/meet-the-artists" variant="secondary">Meet the Artists</BaseButton>
       </div>
     </section>
+
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+      <SectionHeading kicker="Find us" title="Visit The Craft Box" center />
+      <div class="rounded-3xl overflow-hidden border border-border aspect-video max-w-3xl mx-auto">
+        <LocationMap />
+      </div>
+      <p class="mt-4 text-text-secondary text-center">Hillsboro car park, Porthcawl</p>
+    </section>
   </div>
 </template>
 
 <script setup lang="ts">
 import BaseButton from '../components/shared/BaseButton.vue'
 import SectionHeading from '../components/shared/SectionHeading.vue'
+import LocationMap from '../components/shared/LocationMap.vue'
 </script>

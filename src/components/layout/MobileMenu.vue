@@ -48,11 +48,11 @@
 
         <div class="p-4 border-t border-border shrink-0">
           <router-link
-            to="/about-us"
+            to="/meet-the-artists"
             class="block w-full text-center px-5 py-3 bg-accent hover:bg-accent-light text-white rounded-full no-underline font-semibold transition-colors"
             @click="$emit('close')"
           >
-            Join Our Community
+            Meet Our Artists
           </router-link>
         </div>
       </nav>
