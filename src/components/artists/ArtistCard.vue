@@ -3,7 +3,7 @@
     <div class="p-6 pb-0">
       <img
         v-if="artist.photo"
-        :src="artist.photo"
+        :src="withBase(artist.photo)"
         :alt="`Portrait of ${artist.name}`"
         class="w-full aspect-square object-cover rounded-full"
       />
@@ -26,6 +26,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { Artist } from '../../data/artists'
+import { withBase } from '../../utils/assetUrl'
 
 const props = defineProps<{ artist: Artist }>()
 const initial = computed(() => props.artist.name.charAt(0).toUpperCase())
