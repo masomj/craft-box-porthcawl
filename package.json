@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite-ssg build",
-    "build:pages": "vue-tsc -b && vite-ssg build --base=/craft-box-porthcawl/",
     "preview": "vite preview"
   },
   "dependencies": {
