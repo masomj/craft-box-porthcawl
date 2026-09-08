@@ -10,7 +10,12 @@
       //
       // Set pathSegmentsToKeep to 1 for project sites (username.github.io/repo)
       // or 0 for custom domain / user sites (username.github.io).
-      const pathSegmentsToKeep = 0;
+      //
+      // Currently 1: the site is deployed at the default project-page URL
+      // (masomj.github.io/craft-box-porthcawl) while thecraftboxporthcawl.co.uk
+      // still points at the live Wix site. Switch this back to 0 once DNS is
+      // cut over to the custom domain.
+      const pathSegmentsToKeep = 1;
       const l = window.location;
       l.replace(
         l.protocol +
