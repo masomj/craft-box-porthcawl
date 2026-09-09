@@ -13,6 +13,10 @@ export interface Artist {
   bio: string
   /** Path under /public. Omitted where the live site has no photo for this artist. */
   photo?: string
+  /** Set once an artist has a live /commissions/:slug page. Drives routing, prerendering and the ArtistCard CTA. */
+  hasCommissionPage?: boolean
+  /** Placeholder work-sample slots for the commission page gallery. Only populated where hasCommissionPage is true. */
+  gallery?: { alt: string }[]
 }
 
 export const artists: Artist[] = [
@@ -22,12 +26,24 @@ export const artists: Artist[] = [
     studio: 'South Wales Seaglass',
     bio: 'Our founder and seaglass extraordinaire. Amanda creates beautiful crafts made from seaglass collected from the local area.',
     photo: '/artists/amanda-adams.jpg',
+    hasCommissionPage: true,
+    gallery: [
+      { alt: "Placeholder — photo of Amanda's work coming soon" },
+      { alt: "Placeholder — photo of Amanda's work coming soon" },
+      { alt: "Placeholder — photo of Amanda's work coming soon" },
+    ],
   },
   {
     slug: 'jo-stanford',
     name: 'Jo Stanford',
     studio: 'Jo Stanford Studios',
     bio: 'Expressive painter Jo creates moody and emotive paintings of the coast. She excellently captures the movement and essence of the sea.',
+    hasCommissionPage: true,
+    gallery: [
+      { alt: "Placeholder — photo of Jo's work coming soon" },
+      { alt: "Placeholder — photo of Jo's work coming soon" },
+      { alt: "Placeholder — photo of Jo's work coming soon" },
+    ],
   },
   {
     slug: 'troy-clark',
@@ -55,5 +71,12 @@ export const artists: Artist[] = [
     studio: 'Cariad Earth',
     bio: "Julie founded the Cariad Earth brand for her fabulous range of candles, soaps & beauty products all hand made with pure & natural ingredients. Overflowing with creativity, Julie also makes handmade wreaths and has recently turned her hand to resin objet d'arts.",
     photo: '/artists/julie-pickin.png',
+    hasCommissionPage: true,
+    gallery: [
+      { alt: "Placeholder — photo of Julie's work coming soon" },
+      { alt: "Placeholder — photo of Julie's work coming soon" },
+      { alt: "Placeholder — photo of Julie's work coming soon" },
+      { alt: "Placeholder — photo of Julie's work coming soon" },
+    ],
   },
 ]

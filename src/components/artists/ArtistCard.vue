@@ -19,6 +19,9 @@
       <p class="text-sm text-text-secondary leading-relaxed">
         {{ artist.bio }}
       </p>
+      <BaseButton v-if="artist.hasCommissionPage" :to="`/commissions/${artist.slug}`" variant="secondary" size="sm" class="mt-auto self-start">
+        Request a Commission
+      </BaseButton>
     </div>
   </article>
 </template>
@@ -27,6 +30,7 @@
 import { computed } from 'vue'
 import type { Artist } from '../../data/artists'
 import { withBase } from '../../utils/assetUrl'
+import BaseButton from '../shared/BaseButton.vue'
 
 const props = defineProps<{ artist: Artist }>()
 const initial = computed(() => props.artist.name.charAt(0).toUpperCase())

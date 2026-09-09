@@ -2,9 +2,12 @@ import { useHead } from '@unhead/vue'
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import { SITE_ORIGIN, siteSchemaGraph } from '../seo/siteSchema'
+import { artists } from '../data/artists'
+
+type PageMeta = { title: string; description: string; ogTitle?: string }
 
 /** title/description/OG copy per route. One entry per seoKey used in router/index.ts. */
-const pageMeta: Record<string, { title: string; description: string; ogTitle?: string }> = {
+const pageMeta: Record<string, PageMeta> = {
   home: {
     title: 'The Craft Box Porthcawl — Handmade Crafts & Local Art',
     description:
@@ -30,13 +33,30 @@ const pageMeta: Record<string, { title: string; description: string; ogTitle?: s
   },
 }
 
+/** Per-artist meta for /commissions/:slug -- built from data, not a static pageMeta entry. */
+function commissionMeta(slug: string): PageMeta | null {
+  const artist = artists.find((a) => a.slug === slug && a.hasCommissionPage)
+  if (!artist) return null
+
+  return {
+    title: `Commission ${artist.name} — The Craft Box Porthcawl`,
+    description: `Request a bespoke commission from ${artist.name}${artist.studio ? ` of ${artist.studio}` : ''} at The Craft Box Porthcawl. See examples of their work and get in touch.`,
+  }
+}
+
 export function useSeoMeta() {
   const route = useRoute()
 
   const seoKey = computed(() => (route.meta.seoKey as string | undefined) ?? 'home')
-  const isNotFound = computed(() => seoKey.value === 'notFound')
-  const homeMeta = pageMeta.home as { title: string; description: string; ogTitle?: string }
-  const meta = computed(() => pageMeta[seoKey.value] ?? homeMeta)
+  const homeMeta = pageMeta.home as PageMeta
+  const notFoundMeta = pageMeta.notFound as PageMeta
+  const meta = computed<PageMeta>(() => {
+    if (seoKey.value === 'commission') {
+      return commissionMeta(route.params.slug as string) ?? notFoundMeta
+    }
+    return pageMeta[seoKey.value] ?? homeMeta
+  })
+  const isNotFound = computed(() => seoKey.value === 'notFound' || meta.value === notFoundMeta)
 
   const title = computed(() => meta.value.title)
   const description = computed(() => meta.value.description)

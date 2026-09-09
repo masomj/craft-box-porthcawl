@@ -37,6 +37,49 @@
       </div>
     </section>
 
+    <section v-if="commissionArtists.length" class="bg-surface-dark border-b border-border">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+        <SectionHeading
+          kicker="Made just for you"
+          title="Commission a Piece"
+          subtitle="Have something special in mind? Several of our resident artists take bespoke commissions — browse their work and get in touch directly."
+          center
+        />
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+          <router-link
+            v-for="artist in commissionArtists"
+            :key="artist.slug"
+            :to="`/commissions/${artist.slug}`"
+            class="bg-white rounded-2xl border border-border p-6 flex flex-col items-center text-center gap-3 no-underline hover:border-primary transition-colors"
+          >
+            <img
+              v-if="artist.photo"
+              :src="withBase(artist.photo)"
+              :alt="`Portrait of ${artist.name}`"
+              class="w-20 h-20 rounded-full object-cover"
+            />
+            <div
+              v-else
+              class="w-20 h-20 rounded-full bg-surface-dark flex items-center justify-center text-primary font-display text-3xl"
+              aria-hidden="true"
+            >
+              {{ artist.name.charAt(0) }}
+            </div>
+            <div>
+              <p class="font-bold text-primary">{{ artist.name }}</p>
+              <p v-if="artist.studio" class="text-sm text-accent-dark font-semibold">{{ artist.studio }}</p>
+            </div>
+            <span class="text-sm font-semibold text-primary">Request a Commission &rarr;</span>
+          </router-link>
+        </div>
+
+        <div class="text-center">
+          <BaseButton to="/meet-the-artists" variant="secondary">See All Artists</BaseButton>
+        </div>
+      </div>
+    </section>
+
     <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
       <SectionHeading kicker="Find us" title="Visit The Craft Box" center />
       <div class="rounded-3xl overflow-hidden border border-border aspect-video max-w-3xl mx-auto">
@@ -48,7 +91,14 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import BaseButton from '../components/shared/BaseButton.vue'
 import SectionHeading from '../components/shared/SectionHeading.vue'
 import LocationMap from '../components/shared/LocationMap.vue'
+import { artists } from '../data/artists'
+import { withBase } from '../utils/assetUrl'
+
+// Data-driven, same as ArtistCard's CTA -- a newly-flagged artist appears
+// here automatically, no template change needed.
+const commissionArtists = computed(() => artists.filter((artist) => artist.hasCommissionPage))
 </script>
