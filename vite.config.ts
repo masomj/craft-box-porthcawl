@@ -6,7 +6,15 @@ import tailwindcss from '@tailwindcss/vite'
 import type { ViteSSGOptions } from 'vite-ssg'
 import { artists } from './src/data/artists'
 
+// GitHub Pages serves this repo from /craft-box-porthcawl/ (no custom
+// domain wired up yet), so assets need that base path only for the
+// `build:pages` script; local builds/previews stay rooted at /.
+const base = process.env.npm_lifecycle_event === 'build:pages'
+  ? '/craft-box-porthcawl/'
+  : '/'
+
 export default defineConfig({
+  base,
   plugins: [
     vue(),
     tailwindcss(),
